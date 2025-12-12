@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itaipu Parquetec - Clone</title>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
+    <!-- Fontes Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Underdog&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           ESTILOS BASE
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .site {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 1310px;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           CABEÇALHO
+           ============================================ */
+        .cabecalho {
+            height: 122px;
+            background-color: transparent;
+            background-image: linear-gradient(180deg, #fff 0%, #dbdbdb 100%);
+        }
+
+        .cabecalho .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cabecalho .logo img {
+            width: 165px;
+        }
+
+        .menu-cabecalho ul {
+            display: flex;
+            list-style: none;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        .menu-cabecalho i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            font-size: 12px;
+            color: white;
+            background-color: #9b9b9b;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .menu-cabecalho a {
+            text-decoration: none;
+        }
+
+        .menu-cabecalho li:hover i {
+            background-color: transparent;
+            color: #9b9b9b;
+        }
+
+        /* ============================================
+           MENU PRINCIPAL
+           ============================================ */
+        .menu {
+            height: 55px;
+            background-color: transparent;
+            background-image: linear-gradient(180deg, #fff 0%, #dbdbdb 100%);
+        }
+
+        .menu ul {
+            height: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #003c6a;
+            padding: 18px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: white;
+        }
+
+        /* ============================================
+           BANNER
+           ============================================ */
+        .banner {
+            display: flex;
+            overflow: hidden;
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* ============================================
+           NOTÍCIAS E COMPETÊNCIAS
+           ============================================ */
+        .noticias-competencias {
+            background-image: linear-gradient(100deg, #00315e, #000825 18%);
+            padding-bottom: 50px;
+        }
+
+        .noticias-competencias .titulo {
+            color: white;
+            padding-top: 120px;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .noticias {
+            display: flex;
+            gap: 20px;
+        }
+
+        .noticias .noticia {
+            flex: 1 1 25%;
+            border-radius: 20px;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .noticia .imagem {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .noticia .imagem img {
+            height: 200px;
+            width: 100%;
+            transition: all 0.5s ease;
+        }
+
+        .noticia .imagem:hover img {
+            scale: 1.15;
+        }
+
+        .noticia .data {
+            width: 100%;
+            background-color: #00315EBD;
+            color: #0082c4;
+            padding: 8px 0;
+            font-style: italic;
+            text-align: center;
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            transition: all 0.5s ease;
+        }
+
+        .noticia .imagem:hover .data {
+            bottom: -35px;
+        }
+
+        .noticia .post p {
+            font-size: 17px;
+            font-weight: 200;
+            line-height: 22px;
+            padding: 20px;
+            color: #003c6a;
+        }
+
+        .noticia .botao {
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .noticia .botao a {
+            text-decoration: none;
+            font-style: italic;
+            background-color: #ebebebeb;
+            color: #0082c4;
+            padding: 4px 15px;
+            border-radius: 25px;
+        }
+
+        .noticia .botao a:hover {
+            background-color: #0082c4;
+            color: #ebebebeb;
+        }
+
+        /* ============================================
+           SEÇÃO COMPETÊNCIAS
+           ============================================ */
+        .competencias {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .competencias .competencia {
+            flex: 0 1 32%;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            border-radius: 5%;
+            border: solid 1px #4fc4ff60;
+        }
+
+        .competencias .competencia img {
+            width: 100%;
+            transition: all 0.5s ease;
+            scale: 1.05;
+        }
+
+        .competencias .competencia img:hover {
+            scale: 1.15;
+        }
+
+        .competencias .competencia h2 {
+            width: 80%;
+            color: white;
+            font-size: 17px;
+            position: absolute;
+            z-index: 1;
+            bottom: 25px;
+            left: 10%;
+            text-align: center;
+        }
+
+        /* ============================================
+           OPORTUNIDADES
+           ============================================ */
+        .container-oportunidades {
+            padding: 50px 0;
+        }
+
+        .oportunidades {
+            background-color: white;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .oportunidades-titulo {
+            color: #003c6a;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .oportunidades .oportunidade {
+            flex: 0 1 23.5%;
+            border-radius: 20px;
+            min-height: 360px;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .oportunidades .oportunidade h2 {
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .oportunidades-botao {
+            height: 50px;
+            background-color: white;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            margin-top: 10px;
+        }
+
+        .oportunidades-botao img {
+            max-height: 100%;
+        }
+
+        .op1 {
+            background-color: rgb(255, 188, 64);
+            color: rgb(255, 188, 64);
+        }
+
+        .op2 {
+            background-color: green;
+            color: green;
+        }
+
+        .op3 {
+            background-color: rgb(23, 119, 209);
+            color: rgb(23, 119, 209);
+        }
+
+        .op4 {
+            background-color: red;
+            color: red;
+        }
+
+        /* ============================================
+           RODAPÉ
+           ============================================ */
+        .rodape {
+            background-image: linear-gradient(180deg, #00315E 42%, #000825 100%);
+            margin-top: 50px;
+            padding: 100px;
+            color: white;
+            flex-wrap: wrap;
+        }
+
+        .esquerda {
+            width: 33.3%;
+            justify-self: start;
+            float: left;
+            min-height: 250px;
+        }
+
+        .esquerda .logo img {
+            width: 165px;
+        }
+
+        .midia ul {
+            list-style: none;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .midia ul li {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 5px;
+            background-color: #0082c4;
+            border: solid 1px #0082c4;
+            border-radius: 15px;
+        }
+
+        .midia ul li:hover {
+            background-color: #0c2c5c;
+            color: #0082c4;
+        }
+
+        .midia ul li:hover a {
+            color: #0082c4;
+        }
+
+        .midia a {
+            color: #0c2c5c;
+            text-decoration: none;
+            margin: 0px 2px;
+        }
+
+        .rodape-botao {
+            height: 30px;
+            width: 390px;
+            background-image: linear-gradient(#0758a3, #0c2c5c);
+            border-radius: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            margin-top: 10px;
+        }
+
+        .rodape .centro {
+            text-align: end;
+            min-height: 250px;
+            margin-top: 30px;
+            width: 33.3%;
+            justify-self: center;
+            float: left;
+        }
+
+        .rodape .centro ul {
+            list-style: none;
+        }
+
+        .rodape .centro a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .rodape .centro ul li a:hover {
+            color: rgb(20, 140, 225);
+        }
+
+        .direita {
+            display: flex;
+            justify-content: end;
+            width: 33.3%;
+            float: left;
+            margin-top: 15px;
+        }
+
+        .direita .rodape-botao {
+            width: 150px;
+        }
+
+        .direitos {
+            justify-self: last baseline;
+            justify-self: center;
+            align-self: center;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .direitos a {
+            text-decoration: none;
+            color: rgb(20, 140, 225);
+        }
+
+        /* ============================================
+           MEDIA QUERIES - VERSÃO RESPONSIVA
+           ============================================ */
+
+        /* 1. TABLET (até 1200px) */
+        @media (max-width: 1200px) {
+            /* Ajusta container geral */
+            .container {
+                width: 95% !important;
+                max-width: 100% !important;
+                padding: 0 15px;
+            }
+            
+            /* COMPETÊNCIAS - 2 colunas */
+            .competencias .competencia {
+                flex: 0 1 48% !important;
+            }
+            
+            /* NOTÍCIAS - 2 colunas */
+            .noticias {
+                flex-wrap: wrap;
+            }
+            
+            .noticias .noticia {
+                flex: 0 1 48% !important;
+                margin-bottom: 20px;
+            }
+            
+            /* OPORTUNIDADES - 2 colunas */
+            .oportunidades .oportunidade {
+                flex: 0 1 48% !important;
+            }
+            
+            /* RODAPÉ - Ajusta layout */
+            .rodape {
+                padding: 60px 20px !important;
+            }
+            
+            .esquerda, .centro, .direita {
+                width: 100% !important;
+                float: none !important;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            
+            .rodape .centro {
+                text-align: center;
+            }
+            
+            .rodape-botao {
+                width: 100% !important;
+                max-width: 390px;
+                margin: 10px auto;
+            }
+            
+            .direita {
+                justify-content: center !important;
+            }
+            
+            .direita .rodape-botao {
+                width: 200px !important;
+            }
+        }
+
+        /* 2. TABLET PEQUENO (até 768px) */
+        @media (max-width: 768px) {
+            /* CABEÇALHO - Ajusta logo */
+            .cabecalho .logo img {
+                width: 120px;
+            }
+            
+            /* MENU - Ajusta navegação */
+            .menu ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .menu a {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            /* COMPETÊNCIAS - 2 colunas menores */
+            .competencias {
+                gap: 15px;
+            }
+            
+            .competencias .competencia h2 {
+                font-size: 15px;
+                bottom: 15px;
+            }
+            
+            /* TÍTULOS - Ajusta tamanho */
+            .titulo, .oportunidades-titulo {
+                font-size: 24px !important;
+                text-align: center;
+            }
+            
+            /* NOTÍCIAS - 1 coluna */
+            .noticias .noticia {
+                flex: 0 1 100% !important;
+            }
+            
+            /* OPORTUNIDADES - 1 coluna */
+            .oportunidades .oportunidade {
+                flex: 0 1 100% !important;
+                min-height: auto;
+                margin-bottom: 20px;
+            }
+            
+            /* RODAPÉ - Ajustes finos */
+            .midia ul {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .midia ul li {
+                margin: 5px;
+            }
+            
+            .centro ul {
+                columns: 1 !important;
+                text-align: center;
+                padding: 0;
+            }
+        }
+
+        /* 3. SMARTPHONE (até 576px) */
+        @media (max-width: 576px) {
+            /* CABEÇALHO - Empilha elementos */
+            .cabecalho .container {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            
+            .cabecalho {
+                height: auto;
+                padding: 15px 0;
+            }
+            
+            .menu-cabecalho ul {
+                margin-top: 15px;
+            }
+            
+            /* MENU - Menu responsivo simplificado */
+            .menu {
+                height: auto;
+                padding: 10px 0;
+            }
+            
+            .menu ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .menu a {
+                display: block;
+                text-align: center;
+                padding: 12px;
+                width: 100%;
+            }
+            
+            /* BANNER - Ajusta imagem */
+            .banner img {
+                height: auto;
+                max-height: 250px;
+                object-fit: cover;
+            }
+            
+            /* COMPETÊNCIAS - 1 coluna */
+            .competencias .competencia {
+                flex: 0 1 100% !important;
+                margin-bottom: 15px;
+            }
+            
+            .competencias {
+                gap: 15px;
+            }
+            
+            /* NOTÍCIAS - Ajustes finos */
+            .noticia .imagem img {
+                height: 180px;
+            }
+            
+            .noticia .post p {
+                font-size: 15px;
+                padding: 15px;
+            }
+            
+            /* TÍTULOS - Reduz tamanho */
+            .titulo, .oportunidades-titulo {
+                font-size: 20px !important;
+                padding-top: 60px !important;
+            }
+            
+            /* RODAPÉ - Otimiza para mobile */
+            .rodape {
+                padding: 40px 15px !important;
+            }
+            
+            .esquerda .logo img {
+                width: 140px;
+            }
+            
+            .esquerda p {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+            
+            .centro ul li {
+                margin-bottom: 8px;
+            }
+            
+            .centro a {
+                font-size: 14px;
+            }
+            
+            .midia ul li {
+                margin: 3px;
+                padding: 8px;
+            }
+            
+            .midia a {
+                font-size: 16px;
+            }
+            
+            /* BOTÕES - Ajusta largura */
+            .rodape-botao {
+                width: 100% !important;
+                max-width: 300px;
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+            
+            .oportunidades-botao {
+                height: 45px;
+                font-size: 14px;
+            }
+            
+            .direitos {
+                font-size: 12px;
+                margin-top: 20px;
+            }
+        }
+
+        /* 4. EXTRA PEQUENO (até 400px) */
+        @media (max-width: 400px) {
+            /* ÍCONES do cabeçalho */
+            .menu-cabecalho i {
+                width: 25px;
+                height: 25px;
+                font-size: 10px;
+            }
+            
+            /* COMPETÊNCIAS - Texto menor */
+            .competencias .competencia h2 {
+                font-size: 13px;
+                bottom: 10px;
+                left: 5%;
+                width: 90%;
+            }
+            
+            /* NOTÍCIAS - Botão menor */
+            .noticia .botao a {
+                font-size: 14px;
+                padding: 5px 12px;
+            }
+            
+            /* RODAPÉ - Textos menores */
+            .esquerda p {
+                font-size: 13px;
+            }
+            
+            .centro a {
+                font-size: 13px;
+            }
+            
+            .rodape-botao {
+                font-size: 13px;
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="site">
+
+        <header class="cabecalho">
+            <div class="container">
+                <div class="logo">
+                    <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/09/itaipuparquetec_RGB-01-1024x312.png"
+                        alt="logo">
+                </div>
+
+                <div class="menu-cabecalho">
+                    <ul>
+                        <li><a href="#"> <i class="bi bi-search"> </i></a></li>
+                        <li><a href="#"> <i class="bi bi-instagram"> </i></a></li>
+                        <li><a href="#"> <i class="bi bi-linkedin"> </i></a></li>
+                        <li><a href="#"> <i class="bi bi-facebook"> </i></a></li>
+                        <li><a href="#"> <i class="bi bi-youtube"> </i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <menu class="menu">
+            <div class="container">
+                <ul>
+                    <li><a href="#">Institucional</a></li>
+                    <li><a href="#">Emprendedorismo e Inovação</a></li>
+                    <li><a href="#">Oportunidades</a></li>
+                    <li><a href="#">Turismo</a></li>
+                    <li><a href="#">Itaipu</a></li>
+                </ul>
+            </div>
+        </menu>
+
+        <div class="banner">
+            <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2025/06/Banner_site.png" alt="Banner do Itaipu Parquetec">
+        </div>
+
+        <div class="noticias-competencias">
+            <div class="container">
+                <h1 class="titulo">NOTÍCIAS</h1>
+                <div class="noticias">
+                    <div class="noticia">
+                        <div class="imagem">
+                            <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2025/08/Design-sem-nome-scaled.jpg"
+                                alt="Notícia 1">
+                            <div class="data">
+                                <span>8 de agosto, 2025</span>
+                            </div>
+                        </div>
+                        <div class="post">
+                            <p>Mercado Público Barrageiro e SESC realizam exibição de curtas-metragens aberta ao público</p>
+                        </div>
+                        <div class="botao">
+                            <a href="#"> Leia mais >></a>
+                        </div>
+                    </div>
+
+                    <div class="noticia">
+                        <div class="imagem">
+                            <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2025/08/54701295882_89bc1eb698_5k-scaled.jpg"
+                                alt="Notícia 2">
+                            <div class="data">
+                                <span>7 de agosto, 2025</span>
+                            </div>
+                        </div>
+                        <div class="post">
+                            <p>Uniformes que ganham nova vida: Clube de Mães recebe 1.480 peças para reaproveitamento artesanal</p>
+                        </div>
+                        <div class="botao">
+                            <a href="#"> Leia mais >></a>
+                        </div>
+                    </div>
+
+                    <div class="noticia">
+                        <div class="imagem">
+                            <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2025/08/54701628118_5b426de08a_k.jpg"
+                                alt="Notícia 3">
+                            <div class="data">
+                                <span>6 de agosto, 2025</span>
+                            </div>
+                        </div>
+                        <div class="post">
+                            <p>Itaipu Parquetec apresenta trabalhos técnicos em evento do setor elétrico</p>
+                        </div>
+                        <div class="botao">
+                            <a href="#"> Leia mais >></a>
+                        </div>
+                    </div>
+
+                    <div class="noticia">
+                        <div class="imagem">
+                            <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2025/08/09A1759-min-scaled.jpg"
+                                alt="Notícia 4">
+                            <div class="data">
+                                <span>4 de agosto, 2025</span>
+                            </div>
+                        </div>
+                        <div class="post">
+                            <p>Turismo Itaipu e Mercado Público Barrageiro ultrapassam a marca de 110 mil visitantes em julho</p>
+                        </div>
+                        <div class="botao">
+                            <a href="#"> Leia mais >></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <h1 class="titulo">COMPETÊNCIAS</h1>
+                <div class="competencias">
+                    <div class="competencia">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2022/04/3_Compete%CC%82ncias_Banners_01.png"
+                            alt="Automação e simulação de sistemas elétricos">
+                        <h2>AUTOMAÇÃO E SIMULAÇÃO DE SISTEMAS ELÉTRICOS</h2>
+                    </div>
+
+                    <div class="competencia">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2022/04/3_Competências_Banners-02.png"
+                            alt="Energias renováveis">
+                        <h2>ENERGIAS RENOVÁVEIS</h2>
+                    </div>
+
+                    <div class="competencia">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2022/04/3_Competências_Banners-03.png"
+                            alt="Inteligência e gestão territorial">
+                        <h2>INTELIGÊNCIA E GESTÃO TERRITORIAL</h2>
+                    </div>
+
+                    <div class="competencia">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2022/04/3_Competências_Banners-04.png"
+                            alt="Tecnologias aplicadas">
+                        <h2>TECNOLOGIAS APLICADAS</h2>
+                    </div>
+
+                    <div class="competencia">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2022/04/3_Competências_Banners-05.png"
+                            alt="Estruturas de barragens">
+                        <h2>ESTRUTURAS DE BARRAGENS</h2>
+                    </div>
+
+                    <div class="competencia">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2022/04/3_Competências_Banners-06.png"
+                            alt="Segurança cibernética">
+                        <h2>SEGURANÇA CIBERNÉTICA</h2>
+                    </div>
+
+                    <div class="competencia">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2022/04/3_Competências_Banners-07.png"
+                            alt="Arquitetura e engenharia">
+                        <h2>ARQUITETURA E ENGENHARIA</h2>
+                    </div>
+
+                    <div class="competencia">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2022/04/3_Competências_Banners-08.png"
+                            alt="Ciência e educação">
+                        <h2>CIÊNCIA E EDUCAÇÃO</h2>
+                    </div>
+
+                    <div class="competencia">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2022/04/3_Competências_Banners-09.png"
+                            alt="Turismo sustentável">
+                        <h2>TURISMO SUSTENTÁVEL</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container container-oportunidades">
+            <h1 class="oportunidades-titulo">OPORTUNIDADES</h1>
+            <div class="oportunidades">
+                <div class="oportunidade op1">
+                    <h2>Cursos</h2>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/05/Oportunidades_Icones_Cursos-02.png" alt="">
+                        <span>Livres</span>
+                    </a>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/09/logo-eis-nova-vertical-amarelo-icon-2.png" alt="">
+                        <span>Escola Itaipu para Sustentabilidade</span>
+                    </a>
+                </div>
+                
+                <div class="oportunidade op2">
+                    <h2>Editais</h2>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/05/Oportunidades_Icones_Editais-01.png" alt="">
+                        <span>Emprendedorismo</span>
+                    </a>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/05/Oportunidades_Icones_Editais-02.png" alt="">
+                        <span>Compras</span>
+                    </a>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2024/04/admin-ajax.png" alt="">
+                        <span>Mercado Público</span>
+                    </a>
+                </div>
+
+                <div class="oportunidade op3">
+                    <h2>Ecossistema</h2>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/05/Oportunidades_Icones_Ecossistema-02.png" alt="">
+                        <span>Conecte-se <br> com a gente</span>
+                    </a>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/05/Oportunidades_Icones_Ecossistema-02.png" alt="">
+                        <span>Alugue uma sala</span>
+                    </a>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/05/Oportunidades_Icones_Ecossistema-02.png" alt="">
+                        <span>Prestação de serviços <br> para <em>startups</em></span>
+                    </a>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/05/Oportunidades_Icones_Ecossistema-01.png" alt="">
+                        <span>Estude aqui</span>
+                    </a>
+                </div>
+
+                <div class="oportunidade op4">
+                    <h2>seja um <br> empregado</h2>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/05/Oportunidades_Icones_Faca_Parte-01.png" alt="">
+                        <span>Trabalhe conosco</span>
+                    </a>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/05/Oportunidades_Icones_Faca_Parte-02.png" alt="">
+                        <span>Seja um estágiario ou <br> seja um aprendiz</span>
+                    </a>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/05/Oportunidades_Icones_Faca_Parte-03.png" alt="">
+                        <span>Seja um bolsista</span>
+                    </a>
+                    <a class="oportunidades-botao" href="">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/05/Oportunidades_Icones_Faca_Parte-04.png" alt="">
+                        <span>Seja um voluntário</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="rodape">
+            <div class="container">
+                <div class="esquerda">
+                    <div class="logo">
+                        <img src="https://www.itaipuparquetec.org.br/wp-content/uploads/2023/03/itaipuparquetec_RGB-07.png" alt="logo">
+                    </div>
+                    <div class="midia">
+                        <ul>
+                            <li><a href="#"> <i class="bi bi-instagram"> </i></a></li>
+                            <li><a href="#"> <i class="bi bi-linkedin"> </i></a></li>
+                            <li><a href="#"> <i class="bi bi-facebook"> </i></a></li>
+                            <li><a href="#"> <i class="bi bi-youtube"> </i></a></li>
+                        </ul>    
+                    </div>
+                    <p><b>ITAIPU PARQUETEC</b></p>
+                    <p>Avenida Tancredo Neves, 6731</p>
+                    <p>CEP: 85867-900 • Foz do Iguaçu, Paraná/Brasil</p>
+                    <p>Contato: (45) 3576 7200 •</p>
+                    <p>comunicacao@itaipuparquetec.org.br</p>
+                    <a class="rodape-botao" href="">
+                        <span><i>Cadastre-se aqui para receber a nossa newsletter</i></span>
+                    </a>
+                </div>
+
+                <div class="centro">
+                    <ul>
+                        <li><a href="">Biblioteca Paulo Freire</a></li>
+                        <li><a href="">Assessoria de Comunicação</a></li>
+                        <li><a href="">Responsabilidade Social</a></li>
+                        <li><a href="">Relatórios e Publicações</a></li>
+                        <li><a href="">Transparência</a></li>
+                        <li><a href="">Canal de Ética</a></li>
+                        <li><a href="">Lei Geral de Proteção de Dados (LGPD) e Solicitação de Direito do Titular</a></li>
+                        <li><a href="">Termos e Condições Gerais de Uso do Site</a></li>
+                        <li><a href="">Política de Privacidade do Site</a></li>
+                        <li><a href="">Política de Cookies</a></li>
+                    </ul>
+                </div>
+
+                <div class="direita">
+                    <div class="voltar-topo">
+                        <a class="rodape-botao" href="#top"><em>voltar ao topo</em></a>
+                    </div>
+                </div>
+
+                <div class="direitos">
+                    <a href="#">2021 © Todos os direitos reservados - Implementado por EVAH.</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>

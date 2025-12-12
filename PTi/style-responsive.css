@@ -1,0 +1,283 @@
+/* ============================================
+   MEDIA QUERIES - VERSÃO RESPONSIVA
+   ============================================ */
+
+/* 1. TABLET (até 1200px) */
+@media (max-width: 1200px) {
+    /* Ajusta container geral */
+    .container {
+        width: 95% !important;
+        max-width: 100% !important;
+        padding: 0 15px;
+    }
+    
+    /* COMPETÊNCIAS - 2 colunas */
+    .competencias .competencia {
+        flex: 0 1 48% !important; /* 2 colunas com gap */
+    }
+    
+    /* NOTÍCIAS - 2 colunas */
+    .noticias {
+        flex-wrap: wrap;
+    }
+    
+    .noticias .noticia {
+        flex: 0 1 48% !important;
+        margin-bottom: 20px;
+    }
+    
+    /* OPORTUNIDADES - 2 colunas */
+    .oportunidades .oportunidade {
+        flex: 0 1 48% !important;
+    }
+    
+    /* RODAPÉ - Ajusta layout */
+    .rodape {
+        padding: 60px 20px !important;
+    }
+    
+    .esquerda, .centro, .direita {
+        width: 100% !important;
+        float: none !important;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .rodape .centro {
+        text-align: center;
+    }
+    
+    .rodape-botao {
+        width: 100% !important;
+        max-width: 390px;
+        margin: 10px auto;
+    }
+    
+    .direita {
+        justify-content: center !important;
+    }
+    
+    .direita .rodape-botao {
+        width: 200px !important;
+    }
+}
+
+/* 2. TABLET PEQUENO (até 768px) */
+@media (max-width: 768px) {
+    /* CABEÇALHO - Ajusta logo */
+    .cabecalho .logo img {
+        width: 120px;
+    }
+    
+    /* MENU - Ajusta navegação */
+    .menu ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .menu a {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    /* COMPETÊNCIAS - 2 colunas menores */
+    .competencias {
+        gap: 15px;
+    }
+    
+    .competencias .competencia h2 {
+        font-size: 15px;
+        bottom: 15px;
+    }
+    
+    /* TÍTULOS - Ajusta tamanho */
+    .titulo, .oportunidades-titulo {
+        font-size: 24px !important;
+        text-align: center;
+    }
+    
+    /* NOTÍCIAS - 1 coluna */
+    .noticias .noticia {
+        flex: 0 1 100% !important;
+    }
+    
+    /* OPORTUNIDADES - 1 coluna */
+    .oportunidades .oportunidade {
+        flex: 0 1 100% !important;
+        min-height: auto;
+        margin-bottom: 20px;
+    }
+    
+    /* RODAPÉ - Ajustes finos */
+    .midia ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .midia ul li {
+        margin: 5px;
+    }
+    
+    .centro ul {
+        columns: 1 !important;
+        text-align: center;
+        padding: 0;
+    }
+}
+
+/* 3. SMARTPHONE (até 576px) */
+@media (max-width: 576px) {
+    /* CABEÇALHO - Empilha elementos */
+    .cabecalho .container {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+    
+    .cabecalho {
+        height: auto;
+        padding: 15px 0;
+    }
+    
+    .menu-cabecalho ul {
+        margin-top: 15px;
+    }
+    
+    /* MENU - Menu responsivo simplificado */
+    .menu {
+        height: auto;
+        padding: 10px 0;
+    }
+    
+    .menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .menu a {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        width: 100%;
+    }
+    
+    /* BANNER - Ajusta imagem */
+    .banner img {
+        height: auto;
+        max-height: 250px;
+        object-fit: cover;
+    }
+    
+    /* COMPETÊNCIAS - 1 coluna */
+    .competencias .competencia {
+        flex: 0 1 100% !important;
+        margin-bottom: 15px;
+    }
+    
+    .competencias {
+        gap: 15px;
+    }
+    
+    /* NOTÍCIAS - Ajustes finos */
+    .noticia .imagem img {
+        height: 180px;
+    }
+    
+    .noticia .post p {
+        font-size: 15px;
+        padding: 15px;
+    }
+    
+    /* TÍTULOS - Reduz tamanho */
+    .titulo, .oportunidades-titulo {
+        font-size: 20px !important;
+        padding-top: 60px !important;
+    }
+    
+    /* RODAPÉ - Otimiza para mobile */
+    .rodape {
+        padding: 40px 15px !important;
+    }
+    
+    .esquerda .logo img {
+        width: 140px;
+    }
+    
+    .esquerda p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    .centro ul li {
+        margin-bottom: 8px;
+    }
+    
+    .centro a {
+        font-size: 14px;
+    }
+    
+    .midia ul li {
+        margin: 3px;
+        padding: 8px;
+    }
+    
+    .midia a {
+        font-size: 16px;
+    }
+    
+    /* BOTÕES - Ajusta largura */
+    .rodape-botao {
+        width: 100% !important;
+        max-width: 300px;
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+    
+    .oportunidades-botao {
+        height: 45px;
+        font-size: 14px;
+    }
+    
+    .direitos {
+        font-size: 12px;
+        margin-top: 20px;
+    }
+}
+
+/* 4. EXTRA PEQUENO (até 400px) */
+@media (max-width: 400px) {
+    /* ÍCONES do cabeçalho */
+    .menu-cabecalho i {
+        width: 25px;
+        height: 25px;
+        font-size: 10px;
+    }
+    
+    /* COMPETÊNCIAS - Texto menor */
+    .competencias .competencia h2 {
+        font-size: 13px;
+        bottom: 10px;
+        left: 5%;
+        width: 90%;
+    }
+    
+    /* NOTÍCIAS - Botão menor */
+    .noticia .botao a {
+        font-size: 14px;
+        padding: 5px 12px;
+    }
+    
+    /* RODAPÉ - Textos menores */
+    .esquerda p {
+        font-size: 13px;
+    }
+    
+    .centro a {
+        font-size: 13px;
+    }
+    
+    .rodape-botao {
+        font-size: 13px;
+        height: 35px;
+    }
+}
