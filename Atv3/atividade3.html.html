@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Avaliativa - JavaScript</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .dark-mode h1, .dark-mode h2, .dark-mode h3 {
+            color: #ecf0f1;
+        }
+        
+        .exercicio {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .dark-mode .exercicio {
+            background-color: #2c3e50;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        button.reset {
+            background-color: #e74c3c;
+        }
+        
+        button.reset:hover {
+            background-color: #c0392b;
+        }
+        
+        button.dark-mode-toggle {
+            background-color: #34495e;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+        
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 400px;
+            margin: 10px 0;
+        }
+        
+        .dark-mode input, .dark-mode textarea {
+            background-color: #34495e;
+            border-color: #4a6572;
+            color: #f5f5f5;
+        }
+        
+        .lista-itens {
+            list-style-type: decimal;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .imagem-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .imagem-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .frase-personagem {
+            margin-top: 10px;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+        
+        .dark-mode .frase-personagem {
+            color: #bdc3c7;
+        }
+        
+        .mensagem {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .sucesso {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .dark-mode .sucesso {
+            background-color: #155724;
+            color: #d4edda;
+        }
+        
+        .erro {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .dark-mode .erro {
+            background-color: #721c24;
+            color: #f8d7da;
+        }
+        
+        .aventura-gerada {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .dark-mode .aventura-gerada {
+            background-color: #34495e;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .password-container {
+            position: relative;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: none;
+            border: none;
+            color: #3498db;
+            cursor: pointer;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        .dark-mode .toggle-password {
+            color: #5dade2;
+        }
+        
+        .contador {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Atividade Avaliativa - JavaScript</h1>
+        
+        <!-- Botão para alternar modo escuro/claro -->
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">Modo Escuro</button>
+        
+        <!-- Exercício 3 -->
+        <div class="exercicio">
+            <h2>Exercício 3: Modificar Elemento H1</h2>
+            <h1 id="h1-modificavel">Texto Original do H1</h1>
+            <p>Este texto muda aleatoriamente a cada atualização da página</p>
+        </div>
+        
+        <!-- Exercício 4 -->
+        <div class="exercicio">
+            <h2>Exercício 4: Contador</h2>
+            <p class="contador" id="contador">0</p>
+            <button id="incrementar">Incrementar Contador</button>
+            <button id="zerar" class="reset">Zerar Contador</button>
+        </div>
+        
+        <!-- Exercício 5 -->
+        <div class="exercicio">
+            <h2>Exercício 5: Adicionar Itens à Lista</h2>
+            <button id="adicionar-item">Adicionar Item à Lista</button>
+            <ol id="lista-itens" class="lista-itens">
+                <li>Item n° 1</li>
+            </ol>
+        </div>
+        
+        <!-- Exercício 6 -->
+        <div class="exercicio">
+            <h2>Exercício 6: Gerador de Nomes de Aventuras</h2>
+            <div class="aventura-gerada" id="aventura-gerada">
+                Mister Éowyn, o Paladino de Gondor
+            </div>
+            <button id="gerar-aventura">Gerar Nova Aventura</button>
+        </div>
+        
+        <!-- Exercício 7 -->
+        <div class="exercicio">
+            <h2>Exercício 7: Gravity Falls - Dipper Pines</h2>
+            <div class="imagem-container">
+                <img id="personagem-gravity-falls" src="https://upload.wikimedia.org/wikipedia/pt/5/5e/Dipper_Pines.png" alt="Dipper Pines" width="300">
+                <p class="frase-personagem" id="frase-personagem">Passe o mouse sobre a imagem para ver as reações do Dipper</p>
+            </div>
+        </div>
+        
+        <!-- Exercício 8 e 9 -->
+        <div class="exercicio">
+            <h2>Exercícios 8 e 9: Verificador de Sabor de Sorvete</h2>
+            <div class="form-group">
+                <label for="sorvete-input">Digite um sabor de sorvete:</label>
+                <input type="text" id="sorvete-input" placeholder="Ex: chocolate, flocos, morango...">
+            </div>
+            <div id="mensagem-sorvete" class="mensagem">
+                Digite um sabor de sorvete acima...
+            </div>
+        </div>
+        
+        <!-- Exercício 10 -->
+        <div class="exercicio">
+            <h2>Exercício 10: Trocar Imagens Automaticamente</h2>
+            <div class="imagem-container">
+                <img id="imagem-trocar" src="https://picsum.photos/id/237/600/400" alt="Imagem aleatória" width="600" height="400">
+            </div>
+            <button onclick="iniciarTrocaImagens()">Iniciar Troca de Imagens</button>
+            <button onclick="pararTrocaImagens()">Parar Troca de Imagens</button>
+        </div>
+        
+        <!-- Exercício 11 -->
+        <div class="exercicio">
+            <h2>Exercício 11: Validação de Formulário</h2>
+            <form id="form-cadastro">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome">
+                    <div id="erro-nome" class="mensagem"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" placeholder="Digite seu e-mail">
+                    <div id="erro-email" class="mensagem"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="senha">Senha:</label>
+                    <div class="password-container">
+                        <input type="password" id="senha" placeholder="Digite sua senha">
+                        <button type="button" class="toggle-password" onclick="togglePassword('senha')">Mostrar</button>
+                    </div>
+                    <div id="erro-senha" class="mensagem"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmar-senha">Confirmar Senha:</label>
+                    <div class="password-container">
+                        <input type="password" id="confirmar-senha" placeholder="Confirme sua senha">
+                        <button type="button" class="toggle-password" onclick="togglePassword('confirmar-senha')">Mostrar</button>
+                    </div>
+                    <div id="erro-confirmar-senha" class="mensagem"></div>
+                </div>
+                
+                <button type="submit">Cadastrar</button>
+                <button type="button" onclick="limparFormulario()">Limpar</button>
+            </form>
+            <div id="resultado-validacao" class="mensagem"></div>
+        </div>
+    </div>
+
+    <script>
+        // Exercício 3: Modificar elemento H1
+        document.addEventListener('DOMContentLoaded', function() {
+            const h1 = document.getElementById('h1-modificavel');
+            const cores = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c'];
+            
+            // Gerar tamanho aleatório entre 30 e 100 pixels
+            const tamanho = Math.floor(Math.random() * 71) + 30;
+            
+            // Escolher cor aleatória
+            const cor = cores[Math.floor(Math.random() * cores.length)];
+            
+            // Alterar o H1
+            h1.style.fontSize = `${tamanho}px`;
+            h1.style.color = cor;
+            h1.textContent = 'Texto Modificado pelo JavaScript!';
+        });
+        
+        // Exercício 4: Contador
+        let contador = 0;
+        const elementoContador = document.getElementById('contador');
+        const botaoIncrementar = document.getElementById('incrementar');
+        const botaoZerar = document.getElementById('zerar');
+        
+        botaoIncrementar.addEventListener('click', function() {
+            contador++;
+            elementoContador.textContent = contador;
+        });
+        
+        botaoZerar.addEventListener('click', function() {
+            contador = 0;
+            elementoContador.textContent = contador;
+        });
+        
+        // Exercício 5: Adicionar itens à lista
+        const botaoAdicionarItem = document.getElementById('adicionar-item');
+        const listaItens = document.getElementById('lista-itens');
+        
+        botaoAdicionarItem.addEventListener('click', function() {
+            const numeroItem = listaItens.children.length + 1;
+            const novoItem = document.createElement('li');
+            novoItem.textContent = `Item n° ${numeroItem}`;
+            listaItens.appendChild(novoItem);
+        });
+        
+        // Exercício 6: Gerador de Nomes de Aventuras
+        const titulos = ["Sr.", "Mister", "Dom", "Lord", "Lady", "Capitão", "Dama"];
+        const nomes = ["Arthur", "Gwendolyn", "Merlin", "Lancelot", "Morgana", "Ragnar", "Éowyn"];
+        const classes = ["Mago", "Paladino", "Arqueiro", "Ladino", "Bárbaro", "Feiticeiro", "Cavaleiro"];
+        const locais = ["Valfenda", "Gondor", "Asgard", "Camelot", "Nárnia", "Babilônia", "Atlantis"];
+        
+        function gerarNomeAventura() {
+            const titulo = titulos[Math.floor(Math.random() * titulos.length)];
+            const nome = nomes[Math.floor(Math.random() * nomes.length)];
+            const classe = classes[Math.floor(Math.random() * classes.length)];
+            const local = locais[Math.floor(Math.random() * locais.length)];
+            
+            return `${titulo} ${nome}, o ${classe} de ${local}`;
+        }
+        
+        document.getElementById('gerar-aventura').addEventListener('click', function() {
+            document.getElementById('aventura-gerada').textContent = gerarNomeAventura();
+        });
+        
+        // Exercício 7: Gravity Falls - Dipper Pines
+        const imagemPersonagem = document.getElementById('personagem-gravity-falls');
+        const frasePersonagem = document.getElementById('frase-personagem');
+        
+        imagemPersonagem.addEventListener('mouseenter', function() {
+            frasePersonagem.textContent = "Dipper diz: 'O mistério está em todo lugar!'";
+        });
+        
+        imagemPersonagem.addEventListener('mouseleave', function() {
+            frasePersonagem.textContent = "Dipper diz: 'Até mais, estou de volta à investigação!'";
+        });
+        
+        imagemPersonagem.addEventListener('mousemove', function(event) {
+            const x = event.offsetX;
+            const y = event.offsetY;
+            frasePersonagem.textContent = `Dipper está analisando algo na posição (${x}, ${y})...`;
+        });
+        
+        imagemPersonagem.addEventListener('click', function() {
+            frasePersonagem.textContent = "Dipper diz: 'Encontrei uma pista! Preciso contar para o Tio Stan!'";
+        });
+        
+        // Exercício 8 e 9: Verificador de Sabor de Sorvete
+        const inputSorvete = document.getElementById('sorvete-input');
+        const mensagemSorvete = document.getElementById('mensagem-sorvete');
+        
+        inputSorvete.addEventListener('input', function() {
+            const texto = this.value.toLowerCase().trim();
+            
+            if (texto.length > 3) {
+                if (texto.includes('chocolate')) {
+                    mensagemSorvete.textContent = "Eu amo sorvete de chocolate!";
+                    mensagemSorvete.className = 'mensagem sucesso';
+                } else if (texto.includes('flocos')) {
+                    mensagemSorvete.textContent = "Ahh, mas chocolate é o meu favorito...";
+                    mensagemSorvete.className = 'mensagem';
+                } else {
+                    mensagemSorvete.textContent = "Ahh, eu esperava um sabor de sorvete...";
+                    mensagemSorvete.className = 'mensagem';
+                }
+            } else {
+                mensagemSorvete.textContent = "Digite um sabor de sorvete acima...";
+                mensagemSorvete.className = 'mensagem';
+            }
+        });
+        
+        // Exercício 9: Modo escuro/claro
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const botao = document.querySelector('.dark-mode-toggle');
+            if (document.body.classList.contains('dark-mode')) {
+                botao.textContent = 'Modo Claro';
+            } else {
+                botao.textContent = 'Modo Escuro';
+            }
+        }
+        
+        // Exercício 10: Trocar Imagens Automaticamente
+        const imagens = [
+            "https://picsum.photos/id/237/600/400",
+            "https://picsum.photos/id/238/600/400",
+            "https://picsum.photos/id/239/600/400",
+            "https://picsum.photos/id/240/600/400",
+            "https://picsum.photos/id/241/600/400",
+            "https://picsum.photos/id/242/600/400"
+        ];
+        
+        let indiceImagem = 0;
+        let intervaloImagens;
+        
+        function trocarImagem() {
+            const img = document.getElementById('imagem-trocar');
+            img.src = imagens[indiceImagem];
+            indiceImagem = (indiceImagem + 1) % imagens.length;
+        }
+        
+        function iniciarTrocaImagens() {
+            if (intervaloImagens) {
+                clearInterval(intervaloImagens);
+            }
+            trocarImagem(); // Mostrar imediatamente
+            intervaloImagens = setInterval(trocarImagem, 5000);
+        }
+        
+        function pararTrocaImagens() {
+            if (intervaloImagens) {
+                clearInterval(intervaloImagens);
+                intervaloImagens = null;
+            }
+        }
+        
+        // Exercício 11: Validação de Formulário
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const senhaRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])[A-Za-z\d!@#$%^&*]{8,}$/;
+        
+        function validarFormulario() {
+            let valido = true;
+            
+            // Validar nome
+            const nome = document.getElementById('nome').value;
+            const erroNome = document.getElementById('erro-nome');
+            if (nome.length < 3) {
+                erroNome.textContent = 'O nome deve ter pelo menos 3 caracteres';
+                erroNome.className = 'mensagem erro';
+                valido = false;
+            } else {
+                erroNome.textContent = '';
+            }
+            
+            // Validar email
+            const email = document.getElementById('email').value;
+            const erroEmail = document.getElementById('erro-email');
+            if (!emailRegex.test(email)) {
+                erroEmail.textContent = 'Por favor, insira um e-mail válido';
+                erroEmail.className = 'mensagem erro';
+                valido = false;
+            } else {
+                erroEmail.textContent = '';
+            }
+            
+            // Validar senha
+            const senha = document.getElementById('senha').value;
+            const erroSenha = document.getElementById('erro-senha');
+            if (!senhaRegex.test(senha)) {
+                erroSenha.textContent = 'A senha deve ter pelo menos 8 caracteres, uma letra maiúscula, um número e um caractere especial';
+                erroSenha.className = 'mensagem erro';
+                valido = false;
+            } else {
+                erroSenha.textContent = '';
+            }
+            
+            // Validar confirmação de senha
+            const confirmarSenha = document.getElementById('confirmar-senha').value;
+            const erroConfirmarSenha = document.getElementById('erro-confirmar-senha');
+            if (senha !== confirmarSenha) {
+                erroConfirmarSenha.textContent = 'As senhas não coincidem';
+                erroConfirmarSenha.className = 'mensagem erro';
+                valido = false;
+            } else {
+                erroConfirmarSenha.textContent = '';
+            }
+            
+            return valido;
+        }
+        
+        function togglePassword(id) {
+            const input = document.getElementById(id);
+            const botao = input.nextElementSibling;
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                botao.textContent = 'Ocultar';
+            } else {
+                input.type = 'password';
+                botao.textContent = 'Mostrar';
+            }
+        }
+        
+        function limparFormulario() {
+            document.getElementById('form-cadastro').reset();
+            document.querySelectorAll('#form-cadastro .mensagem').forEach(el => {
+                el.textContent = '';
+                el.className = 'mensagem';
+            });
+            document.getElementById('resultado-validacao').textContent = '';
+            document.getElementById('resultado-validacao').className = 'mensagem';
+        }
+        
+        document.getElementById('form-cadastro').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            if (validarFormulario()) {
+                const resultado = document.getElementById('resultado-validacao');
+                resultado.textContent = 'Cadastro realizado com sucesso!';
+                resultado.className = 'mensagem sucesso';
+                
+                // Em um caso real, enviaria os dados para o servidor aqui
+                console.log('Dados do formulário válidos:', {
+                    nome: document.getElementById('nome').value,
+                    email: document.getElementById('email').value,
+                    senha: document.getElementById('senha').value
+                });
+            } else {
+                const resultado = document.getElementById('resultado-validacao');
+                resultado.textContent = 'Por favor, corrija os erros no formulário';
+                resultado.className = 'mensagem erro';
+            }
+        });
+        
+        // Validação em tempo real
+        document.getElementById('nome').addEventListener('blur', validarFormulario);
+        document.getElementById('email').addEventListener('blur', validarFormulario);
+        document.getElementById('senha').addEventListener('blur', validarFormulario);
+        document.getElementById('confirmar-senha').addEventListener('blur', validarFormulario);
+        
+        // Inicializar troca de imagens
+        iniciarTrocaImagens();
+    </script>
+</body>
+</html>
